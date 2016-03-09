@@ -6,8 +6,9 @@ Per ora ci sono i metodi:
 */
 
 import java.io.*;
+import javafx.geometry.Point2D;
 
-public class Input {
+public class EasyInput {
     public static String inputS(String arg){
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader tastiera = new BufferedReader(input);
@@ -48,5 +49,24 @@ public class Input {
             System.err.println("Error! Unparsable value.");
         }
         return parse;
+    }
+    
+    public static double inputD(String arg){
+        String input = inputS(arg);
+        double parse = 0;
+        try{
+            parse = Double.parseDouble(input);
+        }
+        catch (Exception e){
+            System.out.println("Error! Unparsable value.");
+        }
+        return parse;
+    }
+    
+    public static Point2D inputP2D(String arg){
+        double inputX = inputD(arg+"\nX: ");
+        double inputY = inputD("Y: ");
+        
+        return new Point2D(inputX,inputY);
     }
 }
